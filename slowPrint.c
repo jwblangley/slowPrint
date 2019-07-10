@@ -22,12 +22,18 @@ int main(int argc, char **argv)
 	FILE* fp = stdin;
 	if (argc == 2) {
 		fp = fopen(argv[1], "r");
+		if (fp == NULL) {
+			fprintf(stderr, "Cannot read file: %s\n", argv[1]);
+			return 1;
+		}
 		printf("argc: %d\n", argc);
 	}
 
 	char* inputted = readUntilEOF(fp);
 
 	printByCharOnPress(inputted);
+
+	free(inputted);
 
 	return 0;
 }
