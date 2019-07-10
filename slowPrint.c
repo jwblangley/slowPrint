@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+//N.b: non-standard library
 #include <curses.h>
 
 #include "slowPrint.h"
@@ -18,7 +19,13 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
-	char* inputted = readUntilEOF(stdin);
+	FILE* fp = stdin;
+	if (argc == 2) {
+		fp = fopen(argv[1], "r");
+		printf("argc: %d\n", argc);
+	}
+
+	char* inputted = readUntilEOF(fp);
 
 	printByCharOnPress(inputted);
 
@@ -31,7 +38,7 @@ char* readUntilEOF(FILE* stream) {
 	int txt_index = 0;
 
 	char c;
-	while ((c = getchar()) != EOF) {
+	while ((c = getc(stream)) != EOF) {
 		// If about to exceed buffer, increase by BUFFER_SIZE
 		// Remember extra for null terminator
 		if (txt_index >= txt_len - 1) {
