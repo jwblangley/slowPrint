@@ -11,4 +11,4 @@ This is a command line utility that prints out text at the rate of key presses. 
 * (Optional) Add the binary `slowPrint` to your path
 
 ## Example usage
-`cat example.txt | slowPrint`
+`slowPrint example.txt`
