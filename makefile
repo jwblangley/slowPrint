@@ -6,4 +6,4 @@ all: $(BUILD)
 
 .PHONY: clean
 clean:
-	rm -f slowPrinter
+	rm -f slowPrint
