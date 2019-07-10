@@ -5,6 +5,9 @@ This is a command line utility that prints out text at the rate of key presses. 
 ## To install
 * Clone this repository
 * run `make`
+	* Note that this project requires the non-standard library `curses.h`. On debian-based systems, you can install this with
+
+		`sudo apt-get install libncurses5-dev libncursesw5-dev`
 * (Optional) Add the binary `slowPrint` to your path
 
 ## Example usage
