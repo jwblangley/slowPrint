@@ -11,14 +11,21 @@
 
 int main(int argc, char **argv)
 {
-	char* inputted = readUntilEOF();
+	// Handle incorrect usage
+	if (argc != 1 && argc != 2) {
+		printf("Usage: slowPrint [filename]\n");
+		printf("If no filename is given, slowPrint will read from stdin until EOF (Ctrl-D)\n");
+		return 0;
+	}
+
+	char* inputted = readUntilEOF(stdin);
 
 	printByCharOnPress(inputted);
 
 	return 0;
 }
 
-char* readUntilEOF() {
+char* readUntilEOF(FILE* stream) {
 	char* txt = malloc(sizeof(char) * BUFFER_SIZE);
 	int txt_len = BUFFER_SIZE;
 	int txt_index = 0;
@@ -61,7 +68,7 @@ void printByCharOnPress(char* toPrint) {
 
 			if (c_from_input == '\0') {
 				end_of_input = true;
-				printw("End of inputted string. Press ESC to quit\n");
+				printw("\nEnd of inputted string. Press ESC to quit\n");
 			} else {
 				printw("%c", c_from_input);
 			}
