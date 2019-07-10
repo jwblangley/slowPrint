@@ -61,6 +61,7 @@ char* readUntilEOF(FILE* stream) {
 void printByCharOnPress(char* toPrint) {
   // setup new screen
   initscr();
+  scrollok(stdscr, TRUE);
   cbreak();
   noecho();
 
@@ -79,7 +80,7 @@ void printByCharOnPress(char* toPrint) {
 
       if (c_from_input == '\0') {
         end_of_input = true;
-        printw("\nEnd of inputted string. Press ESC to quit\n");
+        printw("\n\n\nEnd of inputted string. Press ESC to quit\n");
       } else {
         printw("%c", c_from_input);
       }
