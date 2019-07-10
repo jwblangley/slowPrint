@@ -3,4 +3,6 @@
 
 char* readUntilEOF();
 
+void printByCharOnPress(char* toPrint);
+
 #endif
